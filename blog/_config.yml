@@ -1,14 +1,33 @@
+#Global Configurations
+
+timezone: America/New_York
+encoding: utf-8
+
+
 # Site settings
-title: Your awesome title
-email: your-email@domain.com
-description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://yourdomain.com" # the base hostname & protocol for your site
-twitter_username: jekyllrb
-github_username:  jekyll
+title: Just me and my words
+email: contactjaimer@gmail.com
+description: > # I like to program, but programming doesn't define me. 
+ It's a mere attribute, I also like poetry, I care about my Environment,
+ I like to talk politics, I love to read Novels. I consider myself a lifetime
+ student of life, and this is a place for me forward my knowledge to someone
+ who might be interested;
+baseurl: "/blog/" # the subpath of your site, e.g. /blog/
+url: "http://Jaime-Reynoso.github.io/" # the base hostname & protocol for your site
+github_username:  Jaime-Reynoso
 
 # Build settings
-markdown: kramdown
+markdown: rdiscount
+permalink: pretty
+paginate: 3
+# Name of your blog (this will show up at the top of your page and in the RSS feed)
+name: Sample Jekyll Blog
+
+# Short description (goes below the title; it will also be used in the RSS feed)
+description: This is a sample Jekyll Blog.
+
+# Your name, as you want it to appear underneath each post and in the footer
+author: Jaime Reynoso
+
+# Your email if you want it to be linked on the contact page
+author_email: contactjaimer@gmail.com
