@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+		{% if page.title %}
+			{{ page.title }}
+		{% endif %}
+		{% include meta.html %}
+
+		{{ site.name }} - {{ site.description }}
+		</title>
+
+
+    	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/bootstrap.min.css">
+    	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/Site.css">
+		<script src="{{ site.baseurl }}/js/JQuery1.9.js"></script>
+		<script src="{{ site.baseurl }}js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		
+	</body>
+</html>
