@@ -3,8 +3,8 @@
   <channel>
     <title>Jaime Reynoso</title>
     <description>I&#39;m a student, a programmer and a human</description>
-    <link></link>
-    <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
+    <link>Jaime-Reynoso.github.io</link>
+    <atom:link href="Jaime-Reynoso.github.io/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
         <title>Microsoft did one thing right, C#</title>
@@ -70,8 +70,8 @@ Command = &quot;{Binding Command Name}&quot;/&gt;
 &lt;p&gt;Data-Binding is intuitive&lt;/p&gt;
 </description>
         <pubDate>Mon, 03 Mar 2014 00:00:00 -0500</pubDate>
-        <link>/Hello-World/</link>
-        <guid isPermaLink="true">/Hello-World/</guid>
+        <link>Jaime-Reynoso.github.io/Hello-World/</link>
+        <guid isPermaLink="true">Jaime-Reynoso.github.io/Hello-World/</guid>
       </item>
     
   </channel>
