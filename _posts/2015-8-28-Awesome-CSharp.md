@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Microsoft did one thing right, C# (Part 1)"
+
 ---
 
 ## C# is an awesome language
@@ -10,10 +11,12 @@ title: "Microsoft did one thing right, C# (Part 1)"
 #### The Using Statement
 
 ''' 
-using(OracleConnection connect = new OracleConnection([Insert Connection string here]))
-{
- // Here I'm going to use the connection somehow	
-}
+
+	using(OracleConnection connect = new OracleConnection([Insert Connection string here]))
+	{
+ 	// Here I'm going to use the connection somehow	
+	}
+
 '''
 
 The using statement essentially gets translated into a try/catch block, so this syntax

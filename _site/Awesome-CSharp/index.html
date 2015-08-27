@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+                Microsoft did one thing right, C# (Part 1) – 
+              
+              Jaime Reynoso – I'm a student, a programmer and a human</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="C# is an awesome language
+" />
+    <meta property="og:description" content="C# is an awesome language
+" />
+    
+    <meta name="author" content="Jaime Reynoso" />
+
+    
+    <meta property="og:title" content="Microsoft did one thing right, C# (Part 1)" />
+    <meta property="twitter:title" content="Microsoft did one thing right, C# (Part 1)" />
+    
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Jaime Reynoso - I'm a student, a programmer and a human" href="/feed.xml" />
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/Site.css">
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/JQuery1.9.js" ></script>
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+  <div class="container">
+    <div class="wrapper-masthead">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="SomeImages/BabyMe.svg" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Jaime Reynoso</a></h1>
+            <p class="site-description">I'm a student, a programmer and a human</p>
+          </div>
+
+          <nav >
+            <a href="/blog.html">Blog</a>
+            <a href="/AboutMe.html">About</a>
+            <a href="/Index.html">Index</a>
+            <a href="/Resume.html"> Resume </a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+       
+      <article class="post">
+  <h1>Microsoft did one thing right, C# (Part 1)</h1>
+  <h2> by Jaime Reynoso - </h2>
+
+  <div class="entry">
+    <h2>C# is an awesome language</h2>
+
+<h3>Here are some of my favorite features</h3>
+
+<h4>The Using Statement</h4>
+
+<p>&#39;&#39;&#39; </p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">using(OracleConnection connect = new OracleConnection([Insert Connection string here]))
+{
+// Here I&#39;m going to use the connection somehow 
+}
+</code></pre></div>
+<p>&#39;&#39;&#39;</p>
+
+<p>The using statement essentially gets translated into a try/catch block, so this syntax
+tells the garbage collector to avoid disposing the object while it&#39;s in the scope of the 
+using statement. Remember, in order to use the using statement on an object you created, you need
+to create an object that implements IDisposable</p>
+
+<h4>LINQ</h4>
+
+<p>&#39;&#39;&#39;</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">List&lt;People&gt; Students = new list&lt;Student&gt;();
+
+[Adding all the students here]
+
+//List for students with a GPA above 3.0
+List&lt;Student&gt; MagnaCumLaude = Student.Where(x =&gt; x.GPA &gt; 3.0).ToList&lt;Student&gt;();
+</code></pre></div>
+<p>&#39;&#39;&#39;</p>
+
+<p>Linq has a great, intuitive syntax. It works on anything that implements the interface IEnumerable and our good friend google can show you all the classes that implement IEnumerable</p>
+
+<h4>Entity Framework</h4>
+
+<p>&#39;&#39;&#39;</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">public class Student
+{
+    #region Properties
+    public double GPA{get; private set;}
+
+    public string Name{get; set;}
+    #endregion
+
+    #region Constructors
+
+    public Student(string Name = string.Empty, GPA = 0.0)
+    {
+        this.Name = (string.IsNullOrEmpty(Name))? &quot;Jane Doe&quot;: Name;
+
+        this.GPA = GPA
+    }
+
+    #endregion
+
+}
+//After the model is created
+public class ApplicationContext: DBContext
+{
+    public ApplicationContext():base(&quot;DefaultConnection&quot;){}
+
+    public DBSet&lt;Student&gt; Students{get; set;}
+}
+
+//Now using it in a class
+
+public class schoolController{
+    private ApplicationContext db = new ApplicationContext();
+
+    public void AddStudent(String Name, double GPA)
+    {
+        //this adds a student to the Database
+        db.Students.Add(new Student(Name, GPA));
+    }
+    public void GetGoodStudents(double standards)
+    {
+        return (from Student
+            in db.Students
+            where Student.GPA &gt; standards
+            select Student).ToList();
+    }
+}
+</code></pre></div>
+<p>&#39;&#39;&#39;</p>
+
+<p>The Entity Framework is an Object Relational Mapper that maps objects you created to a row in a database, but it has a couple of notable features</p>
+
+<p>1.It could be code first, database first or some sort of combination in between.
+2.You don&#39;t have to write 1x10^20 lines of code to pull, and create objects that encapsulate your data
+3. It makes sense</p>
+
+<h4>MVVM with WPF</h4>
+
+<p>First let&#39;s say you have a grid in your XAML that formats the way the program will look</p>
+
+<p>&#39;&#39;&#39;</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;grid&gt;
+&lt;button
+ Command = &quot;{Binding NameCommand}&quot;/&gt;
+&lt;/grid&gt;
+</code></pre></div>
+<p>&#39;&#39;&#39;</p>
+
+<p>Then in the back-end, somewhere</p>
+
+<p>&#39;&#39;&#39;</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Public ICommand NameCommand {get; set;}
+</code></pre></div>
+<p>&#39;&#39;&#39;</p>
+
+<p>Then define a function that determines when the button should be enabled, this is Optional.</p>
+
+<p>&#39;&#39;&#39;</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">private bool CanName()
+{
+    if(some property)
+      return true;
+    return false;
+}
+</code></pre></div>
+<p>&#39;&#39;&#39;</p>
+
+<p>This is what it will do</p>
+
+<p>&#39;&#39;&#39;</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">private void Name()
+{
+    //Doing Something
+}
+</code></pre></div>
+<p>&#39;&#39;&#39;</p>
+
+<p>and don&#39;t forget in your constructor</p>
+
+<p>&#39;&#39;&#39;</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">NameCommand = new RelayCommand(this.DoSomething, this.Name );
+</code></pre></div>
+<p>&#39;&#39;&#39;</p>
+
+<p>Disclaimer: RelayCommand is a class inside of MVVM light, if you haven&#39;t referenced the framework, make sure to type</p>
+
+<p>&#39;&#39;&#39;</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Install-Package MvvmLight
+</code></pre></div>
+<p>&#39;&#39;&#39;</p>
+
+<h3>Key Notes</h3>
+
+<p>The MVVM design pattern was designed with the upmost modularity in mind. The View contains the format for the way the application should look. The ViewModel contains the business logic ( also referred to as the Controller
+in MVC ) and the Model contains the objects that you&#39;ve created and are using. For more information <a href="https://msdn.microsoft.com/en-us/magazine/Dn605875.aspx">MSDN Article</a></p>
+
+<h5>I love the MVVM Design pattern</h5>
+
+<p>MVVM is not perfect, it has a bit of an overhead, but it&#39;s a good separation of design goals.</p>
+
+<p>Data-Binding is intuitive</p>
+
+  </div>
+
+  <div class="date">
+    Written on August 28, 2015
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+<a href="mailto:Contactjaimer@gmail.com"><i class="svg-icon email"></i></a>
+
+
+<a href="https://github.com/Jaime-Reynoso"><i class="svg-icon github"></i></a>
+
+<a href="https://www.linkedin.com/in/www.linkedin.com/in/ContactJaimeR"><i class="svg-icon linkedin"></i></a>
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

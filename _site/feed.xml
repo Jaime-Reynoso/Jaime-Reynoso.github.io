@@ -7,61 +7,157 @@
     <atom:link href="Jaime-Reynoso.github.io/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
-        <title>Microsoft did one thing right, C#</title>
+        <title>Microsoft did one thing right, C# (Part 1)</title>
         <description>&lt;h2&gt;C# is an awesome language&lt;/h2&gt;
 
 &lt;h3&gt;Here are some of my favorite features&lt;/h3&gt;
 
 &lt;h4&gt;The Using Statement&lt;/h4&gt;
 
-&lt;blockquote&gt;
-&lt;p&gt;using(OracleConnection connect = new OracleConnection(&lt;connectionString&gt;))
+&lt;p&gt;&amp;#39;&amp;#39;&amp;#39; &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;using(OracleConnection connect = new OracleConnection([Insert Connection string here]))
 {
-// Here I&amp;#39;m going to use the connection somehow&lt;br&gt;
-}&lt;/p&gt;
-&lt;/blockquote&gt;
+// Here I&amp;#39;m going to use the connection somehow 
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&amp;#39;&amp;#39;&amp;#39;&lt;/p&gt;
 
-&lt;p&gt;The using statement essentially gets translated into a try/catch block, but this 
-syntax allows for simplicity and a greater ability to express yourself with code.&lt;/p&gt;
+&lt;p&gt;The using statement essentially gets translated into a try/catch block, so this syntax
+tells the garbage collector to avoid disposing the object while it&amp;#39;s in the scope of the 
+using statement. Remember, in order to use the using statement on an object you created, you need
+to create an object that implements IDisposable&lt;/p&gt;
+
+&lt;h4&gt;LINQ&lt;/h4&gt;
+
+&lt;p&gt;&amp;#39;&amp;#39;&amp;#39;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;List&amp;lt;People&amp;gt; Students = new list&amp;lt;Student&amp;gt;();
+
+[Adding all the students here]
+
+//List for students with a GPA above 3.0
+List&amp;lt;Student&amp;gt; MagnaCumLaude = Student.Where(x =&amp;gt; x.GPA &amp;gt; 3.0).ToList&amp;lt;Student&amp;gt;();
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&amp;#39;&amp;#39;&amp;#39;&lt;/p&gt;
+
+&lt;p&gt;Linq has a great, intuitive syntax. It works on anything that implements the interface IEnumerable and our good friend google can show you all the classes that implement IEnumerable&lt;/p&gt;
+
+&lt;h4&gt;Entity Framework&lt;/h4&gt;
+
+&lt;p&gt;&amp;#39;&amp;#39;&amp;#39;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;public class Student
+{
+    #region Properties
+    public double GPA{get; private set;}
+
+    public string Name{get; set;}
+    #endregion
+
+    #region Constructors
+
+    public Student(string Name = string.Empty, GPA = 0.0)
+    {
+        this.Name = (string.IsNullOrEmpty(Name))? &amp;quot;Jane Doe&amp;quot;: Name;
+
+        this.GPA = GPA
+    }
+
+    #endregion
+
+}
+//After the model is created
+public class ApplicationContext: DBContext
+{
+    public ApplicationContext():base(&amp;quot;DefaultConnection&amp;quot;){}
+
+    public DBSet&amp;lt;Student&amp;gt; Students{get; set;}
+}
+
+//Now using it in a class
+
+public class schoolController{
+    private ApplicationContext db = new ApplicationContext();
+
+    public void AddStudent(String Name, double GPA)
+    {
+        //this adds a student to the Database
+        db.Students.Add(new Student(Name, GPA));
+    }
+    public void GetGoodStudents(double standards)
+    {
+        return (from Student
+            in db.Students
+            where Student.GPA &amp;gt; standards
+            select Student).ToList();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&amp;#39;&amp;#39;&amp;#39;&lt;/p&gt;
+
+&lt;p&gt;The Entity Framework is an Object Relational Mapper that maps objects you created to a row in a database, but it has a couple of notable features&lt;/p&gt;
+
+&lt;p&gt;1.It could be code first, database first or some sort of combination in between.
+2.You don&amp;#39;t have to write 1x10^20 lines of code to pull, and create objects that encapsulate your data
+3. It makes sense&lt;/p&gt;
 
 &lt;h4&gt;MVVM with WPF&lt;/h4&gt;
 
 &lt;p&gt;First let&amp;#39;s say you have a grid in your XAML that formats the way the program will look&lt;/p&gt;
 
-&lt;blockquote&gt;
-&lt;p&gt;&lt;grid&gt;
-&lt;button
-Command = &quot;{Binding Command Name}&quot;/&gt;
-&lt;/grid&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&amp;#39;&amp;#39;&amp;#39;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&amp;lt;grid&amp;gt;
+&amp;lt;button
+ Command = &amp;quot;{Binding NameCommand}&amp;quot;/&amp;gt;
+&amp;lt;/grid&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&amp;#39;&amp;#39;&amp;#39;&lt;/p&gt;
 
-&lt;p&gt;Then in the back-end&lt;/p&gt;
+&lt;p&gt;Then in the back-end, somewhere&lt;/p&gt;
 
-&lt;blockquote&gt;
-&lt;p&gt;Public ICommand Name{get; set;}&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&amp;#39;&amp;#39;&amp;#39;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;Public ICommand NameCommand {get; set;}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&amp;#39;&amp;#39;&amp;#39;&lt;/p&gt;
 
-&lt;p&gt;Then define your function&lt;/p&gt;
+&lt;p&gt;Then define a function that determines when the button should be enabled, this is Optional.&lt;/p&gt;
 
-&lt;p&gt;This is Optional&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;private bool CanName()
+&lt;p&gt;&amp;#39;&amp;#39;&amp;#39;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;private bool CanName()
 {
-  if(some property)
-     return true;
-  return false;
-}&lt;/p&gt;
-&lt;/blockquote&gt;
+    if(some property)
+      return true;
+    return false;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&amp;#39;&amp;#39;&amp;#39;&lt;/p&gt;
 
 &lt;p&gt;This is what it will do&lt;/p&gt;
 
-&lt;blockquote&gt;
-&lt;p&gt;private void DoSomething()
+&lt;p&gt;&amp;#39;&amp;#39;&amp;#39;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;private void Name()
 {
-  //Doing Something
-}&lt;/p&gt;
-&lt;/blockquote&gt;
+    //Doing Something
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&amp;#39;&amp;#39;&amp;#39;&lt;/p&gt;
+
+&lt;p&gt;and don&amp;#39;t forget in your constructor&lt;/p&gt;
+
+&lt;p&gt;&amp;#39;&amp;#39;&amp;#39;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;NameCommand = new RelayCommand(this.DoSomething, this.Name );
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&amp;#39;&amp;#39;&amp;#39;&lt;/p&gt;
+
+&lt;p&gt;Disclaimer: RelayCommand is a class inside of MVVM light, if you haven&amp;#39;t referenced the framework, make sure to type&lt;/p&gt;
+
+&lt;p&gt;&amp;#39;&amp;#39;&amp;#39;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;Install-Package MvvmLight
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&amp;#39;&amp;#39;&amp;#39;&lt;/p&gt;
+
+&lt;h3&gt;Key Notes&lt;/h3&gt;
+
+&lt;p&gt;The MVVM design pattern was designed with the upmost modularity in mind. The View contains the format for the way the application should look. The ViewModel contains the business logic ( also referred to as the Controller
+in MVC ) and the Model contains the objects that you&amp;#39;ve created and are using. For more information &lt;a href=&quot;https://msdn.microsoft.com/en-us/magazine/Dn605875.aspx&quot;&gt;MSDN Article&lt;/a&gt;&lt;/p&gt;
 
 &lt;h5&gt;I love the MVVM Design pattern&lt;/h5&gt;
 
@@ -69,9 +165,9 @@ Command = &quot;{Binding Command Name}&quot;/&gt;
 
 &lt;p&gt;Data-Binding is intuitive&lt;/p&gt;
 </description>
-        <pubDate>Mon, 03 Mar 2014 00:00:00 -0500</pubDate>
-        <link>Jaime-Reynoso.github.io/Hello-World/</link>
-        <guid isPermaLink="true">Jaime-Reynoso.github.io/Hello-World/</guid>
+        <pubDate>Fri, 28 Aug 2015 00:00:00 -0400</pubDate>
+        <link>Jaime-Reynoso.github.io/Awesome-CSharp/</link>
+        <guid isPermaLink="true">Jaime-Reynoso.github.io/Awesome-CSharp/</guid>
       </item>
     
   </channel>
