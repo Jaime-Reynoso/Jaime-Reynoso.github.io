@@ -19,10 +19,10 @@ title: "Microsoft did one thing right, C# (Part 1)"
 
 '''
 
-The using statement essentially gets translated into a try/catch block, so this syntax
+The using statement essentially gets translated into a try/finally block, so this syntax
 tells the garbage collector to avoid disposing the object while it's in the scope of the 
 using statement. Remember, in order to use the using statement on an object you created, you need
-to create an object that implements IDisposable
+to create an object that implements IDisposable.
 
 ####LINQ
 
