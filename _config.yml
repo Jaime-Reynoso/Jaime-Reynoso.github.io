@@ -18,15 +18,15 @@ avatar: SomeImages/BabyMe.svg
 # Includes an icon in the footer for each username you enter
 footer-links:
   dribbble:
-  email:
+  email: Contactjaimer@gmail.com
   facebook:
   flickr:
-  github: barryclark/jekyll-now
+  github: Jaime-Reynoso
   instagram:
-  linkedin:
+  linkedin: www.linkedin.com/in/ContactJaimeR
   pinterest:
   rss: # just type anything here for a working RSS icon, make sure you set the "url" above!
-  twitter: jekyllrb
+  twitter:
   stackoverflow: # your stackoverflow profile, e.g. "users/50476/bart-kiers"
   youtube: # channel/<your_long_string> or user/<user-name>
   googleplus: # anything in your profile username that comes after plus.google.com/
@@ -64,9 +64,9 @@ version: v1.1.0
 sass:
   style: :expanded # You might prefer to minify using :compressed
 
-# Use the following plug-ins
+
 gems:
-  - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
+  - jekyll-sitemap
 
 # Exclude these files from your production _site
 exclude:

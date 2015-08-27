@@ -1,10 +1,54 @@
 ---
 layout: post
-title: You're up and running!
+title: "Microsoft did one thing right, C#"
 ---
 
-Next you can update your site name, avatar and other options using the _config.yml file in the root of your repository (shown below).
+## C# is an awesome language
 
-![_config.yml]({{ site.baseurl }}/images/config.png)
+###Here are some of my favorite features
 
-The easiest way to make your first post is to edit this one. Go into /_posts/ and update the Hello World markdown file. For more instructions head over to the [Jekyll Now repository](https://github.com/barryclark/jekyll-now) on GitHub.
+#### The Using Statement
+
+> using(OracleConnection connect = new OracleConnection(<connectionString>))
+> {
+> // Here I'm going to use the connection somehow	
+>}
+
+The using statement essentially gets translated into a try/catch block, but this 
+syntax allows for simplicity and a greater ability to express yourself with code.
+
+#### MVVM with WPF
+
+First let's say you have a grid in your XAML that formats the way the program will look
+
+><grid>
+><button
+> Command = "{Binding Command Name}"/>
+></grid>
+
+Then in the back-end
+
+>Public ICommand Name{get; set;}
+
+Then define your function
+
+This is Optional
+>private bool CanName()
+>{
+>	if(some property)
+>      return true;
+>	return false;
+>}
+
+This is what it will do
+
+>private void DoSomething()
+>{
+>	//Doing Something
+>}
+
+#####I love the MVVM Design pattern
+
+MVVM is not perfect, it has a bit of an overhead, but it's a good separation of design goals.
+
+Data-Binding is intuitive

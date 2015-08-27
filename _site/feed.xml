@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jaime Reynoso</title>
+    <description>I&#39;m a student, a programmer and a human</description>
+    <link></link>
+    <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Microsoft did one thing right, C#</title>
+        <description>&lt;h2&gt;C# is an awesome language&lt;/h2&gt;
+
+&lt;h3&gt;Here are some of my favorite features&lt;/h3&gt;
+
+&lt;h4&gt;The Using Statement&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;using(OracleConnection connect = new OracleConnection(&lt;connectionString&gt;))
+{
+// Here I&amp;#39;m going to use the connection somehow&lt;br&gt;
+}&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The using statement essentially gets translated into a try/catch block, but this 
+syntax allows for simplicity and a greater ability to express yourself with code.&lt;/p&gt;
+
+&lt;h4&gt;MVVM with WPF&lt;/h4&gt;
+
+&lt;p&gt;First let&amp;#39;s say you have a grid in your XAML that formats the way the program will look&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;grid&gt;
+&lt;button
+Command = &quot;{Binding Command Name}&quot;/&gt;
+&lt;/grid&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Then in the back-end&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Public ICommand Name{get; set;}&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Then define your function&lt;/p&gt;
+
+&lt;p&gt;This is Optional&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;private bool CanName()
+{
+  if(some property)
+     return true;
+  return false;
+}&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This is what it will do&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;private void DoSomething()
+{
+  //Doing Something
+}&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h5&gt;I love the MVVM Design pattern&lt;/h5&gt;
+
+&lt;p&gt;MVVM is not perfect, it has a bit of an overhead, but it&amp;#39;s a good separation of design goals.&lt;/p&gt;
+
+&lt;p&gt;Data-Binding is intuitive&lt;/p&gt;
+</description>
+        <pubDate>Mon, 03 Mar 2014 00:00:00 -0500</pubDate>
+        <link>/Hello-World/</link>
+        <guid isPermaLink="true">/Hello-World/</guid>
+      </item>
+    
+  </channel>
+</rss>

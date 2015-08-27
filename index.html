@@ -1,18 +1,99 @@
----
-layout: default
----
 
-<div class="posts">
-  {% for post in site.posts %}
-    <article class="post">
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Main Page</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="css/Site.css">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<script src="js/JQuery1.9.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<div class="container-fluid">
+		<div id="register-modal" class="modal fade" role="dialog">
+			  <div class="modal-dialog modal-lg">
 
-      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+			    <!-- Modal content-->
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal">&times;</button>
+			        <h4 class="modal-title">Here is a copy!</h4>
+			      </div>
+			      <div class="modal-body">
+			        
+					<iframe src="SomeImages/objective.pdf" width="100%" height="400px"></iframe>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			      </div>
+			    </div>
 
-      <div class="entry">
-        {{ post.excerpt }}
-      </div>
+			  </div>
+			</div>
+			<nav class="navbar navbar-default col-md-offset-1 col-md-10 Navbar-Personal">
+				<div class="navbar-header">
+					<button type="Button" class="navbar-toggle collapsed" data-toggle="collapse"
+					data-target="#Option-Toggle-Collapse" aria-expanded="false">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#"></a>
+				</div>
 
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
-    </article>
-  {% endfor %}
-</div>
+				<div class="collapse navbar-collapse" id="Option-Toggle-Collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="index.html">Main Page</a></li>
+						<li>
+							<a href="#register-modal" data-toggle="modal" data-target="#register-modal"> Resume </a>
+							
+						</li>
+						
+						<li><a href="blog.html">Blog</a></li>
+						<li><a>About Me</a></li>
+						<li><a href="ContactMe.html">Contact</a></li>
+					</ul>
+				</div>
+			</nav>
+			<div class="Row">
+				<div class="col-md-6">
+					<div class="row">
+						<div class="col-md-8">
+							<img src="SomeImages/BabyMe.svg" alt="Yes, this is me as a baby"/>
+						</div>
+					</div>
+					<div class="col-md-offset-5">
+						<p>Yes, this is me as a baby</p>	
+					</div>
+				</div>
+				<div class="col-md-6 text-centered">
+					<div class="">
+						<h3>Hello, my name is Jaime.</h3>
+						<h3>I'm a student, programmer, and a Naturalist Club member</h3>
+						<h3>Navigate the site to learn more about me. </h3>
+					</div>
+				</div>
+			</div>
+			<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  <div class="modal-header">
+			    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			    <h3 id="myModalLabel">Modal header</h3>
+			  </div>
+			  <div class="modal-body">
+			    <object data="images/objective.pdf" type="application/pdf" width="100%" height="100%">
+		 
+					  <p>It appears you don't have a PDF plugin for this browser.
+					  No biggie... you can <a href="images/objective.pdf">click here to
+					  download the PDF file.</a></p>
+					  
+					</object>
+			  </div>
+			  <div class="modal-footer">
+			    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+			    <button class="btn btn-primary">Save changes</button>
+			  </div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,9 +1,11 @@
 ---
 layout: default
+
 ---
 
 <article class="post">
   <h1>{{ page.title }}</h1>
+  <h2> by {{site.name}} - {{ post.date | date: "%B %e, %Y" }}</h2>
 
   <div class="entry">
     {{ content }}
