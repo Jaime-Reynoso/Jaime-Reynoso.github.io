@@ -24,12 +24,13 @@ to create an object that implements IDisposable
 ####LINQ
 
 '''
-List<People> Students = new list<Student>();
+	
+	List<People> Students = new list<Student>();
 
-[Adding all the students here]
+	[Adding all the students here]
 
-//List for students with a GPA above 3.0
-List<Student> MagnaCumLaude = Student.Where(x => x.GPA > 3.0).ToList<Student>();
+	//List for students with a GPA above 3.0
+	List<Student> MagnaCumLaude = Student.Where(x => x.GPA > 3.0).ToList<Student>();
 
 '''
 
@@ -99,50 +100,62 @@ The Entity Framework is an Object Relational Mapper that maps objects you create
 First let's say you have a grid in your XAML that formats the way the program will look
 
 '''
-<grid>
-<button
- Command = "{Binding NameCommand}"/>
-</grid>
+
+	<grid>
+	<button
+	 Command = "{Binding NameCommand}"/>
+	</grid>
+
 '''
 
 Then in the back-end, somewhere
 
 '''
-Public ICommand NameCommand {get; set;}
+
+	Public ICommand NameCommand {get; set;}
+
 '''
 
 Then define a function that determines when the button should be enabled, this is Optional.
 
 '''
-private bool CanName()
-{
-	if(some property)
-      return true;
-	return false;
-}
+
+	private bool CanName()
+	{
+		if(some property)
+	      return true;
+		return false;
+	}
+
 '''
 
 This is what it will do
 
 '''
-private void Name()
-{
-	//Doing Something
-}
+
+	private void Name()
+	{
+		//Doing Something
+	}
+
 '''
 
 and don't forget in your constructor
 
 '''
 
-NameCommand = new RelayCommand(this.DoSomething, this.Name );
+	NameCommand = new RelayCommand(this.DoSomething, this.Name );
 
 '''
 
 Disclaimer: RelayCommand is a class inside of MVVM light, if you haven't referenced the framework, make sure to type
 
 
-'''Install-Package MvvmLight
+'''
+	
+	Install-Package MvvmLight
+
+'''
 
 ###Key Notes
 
